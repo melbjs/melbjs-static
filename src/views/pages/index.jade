@@ -88,3 +88,12 @@ block content
 				| get back to basics and teach us some useful JavaScript techniques? Maybe
 				| you just want to share some of your hard-earned opinions. Whatever it
 				| is, !{a('http://twitter.com/melbjs', 'contact us on Twitter')} to get involved in an upcoming event.
+
+		section
+
+			h2 Past Presentations
+
+			each video in videos.slice(0, 2)
+				<iframe src="http://player.vimeo.com/video/#{video}?byline=0&portrait=0&" width="536" height="302" frameborder="0" style="margin-bottom: 20px;" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+			p Watch more on !{a('https://vimeo.com/channels/melbjs', 'MelbJS Vimeo Channel')}.

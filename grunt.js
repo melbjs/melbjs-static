@@ -2,7 +2,8 @@ var path = require('path');
 var _ = require('underscore');
 var viewHelpers = require('./src/lib/view-helpers');
 var data = {
-	event: require('./src/data/event.json')
+	event: require('./src/data/event.json'),
+	videos: require('./src/data/videos.json')
 };
 
 module.exports = function(grunt) {
@@ -169,6 +170,7 @@ module.exports = function(grunt) {
 						a: viewHelpers.a,
 						strong: viewHelpers.strong,
 						event: data.event,
+						videos: data.videos,
 						project: {
 							name: '<%= pkg.name %>',
 							version: '<%= pkg.version %>',
