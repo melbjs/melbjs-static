@@ -1,0 +1,249 @@
+/**
+ * Variables  ------------------------------------------------*/
+
+/* Dimentions */
+page-width = 640px
+header-height = 100px
+
+/* CONTAINERS ------------------------------------------------*/
+
+body
+	color #333
+	font-family: "HelveticaNeue-Light", Helvetica, Arial, sans-serif;
+	line-height 1.4em
+	text-align left
+
+#forkme
+	position absolute
+	top 0
+	right 0
+	border 0
+
+.bounding
+	max-width page-width
+	margin 0 auto
+	padding 40px
+	padding-bottom 80px
+
+section
+	padding-bottom 50px
+
+h2
+	font-size 24px
+	line-height 1.3em
+	color #777
+	font-weight normal
+	padding-bottom 24px
+
+h3
+	font-size 16px
+	padding-bottom 20px
+
+h4
+	font-weight normal
+
+p
+	max-width 460px
+	line-height 1.5em
+	padding-bottom 2em
+
+a
+	color #1B89DD
+	text-decoration none
+
+ul
+	margin-bottom 30px
+
+p:last-child
+ul:last-child
+	margin-bottom 0
+	padding-bottom 0
+
+li
+	margin-bottom 10px
+
+
+/* HEADER ----------------------------------------------------*/
+
+#header
+
+	#logo
+		display block
+		position relative
+		left -4px
+		margin-top 10px
+		margin-bottom 50px
+
+	#main-menu
+		position absolute
+		top 84px
+		left 0
+
+		ul
+
+			li
+				float left
+				margin-right 3px
+
+				a
+					float left
+					height 36px
+					line-height 36px
+					font-size 14px
+					text-transform uppercase
+					color #FFF
+					font-weight bold
+					text-decoration none
+					text-shadow -1px -1px 0 #2879c3
+					padding-right 5px
+					background url(../img/background-tab-right.png) right -72px no-repeat
+
+					span
+						float left
+						height 36px
+						line-height 36px
+						padding 0 35px
+						background url(../img/background-tab-left.png) left -72px no-repeat
+
+				a:hover
+					background url(../img/background-tab-right.png) right -36px no-repeat
+
+					span
+						background url(../img/background-tab-left.png) left -36px no-repeat
+
+				a.active
+					background url(../img/background-tab-right.png) right 0 no-repeat
+
+					span
+						background url(../img/background-tab-left.png) left 0 no-repeat
+
+
+/* CONTENT ---------------------------------------------------*/
+
+a.register
+	display inline-block
+	color #fff
+	background-color #1B89DD
+	border-radius 8px
+	padding 6px 16px
+
+div.article
+	position relative
+	display block
+	padding-bottom 20px
+	border-bottom 1px solid #e3e3e2
+	margin-bottom 20px
+
+	.meta
+		font-size: 13px
+		padding-bottom 15px
+
+		.author
+			color #333
+
+		.date
+			color #666
+
+section.next-event
+	margin-bottom 30px
+
+	li strong
+		font-family Helvetica, Arial, sans-serif
+		display inline-block
+		width 60px
+
+section.presentations
+	ul
+		margin-top 4px
+
+		li
+			overflow hidden
+			padding-bottom 10px
+
+			h3
+				font-size 20px
+				font-weight normal
+				padding-bottom 10px
+
+		img
+			float left
+			width 64px
+			height 64px
+			margin 0 14px 14px 0
+			border-radius 8px
+
+		img.no-avatar
+			width 0
+			height 0
+			border 32px solid #f0f0f0
+
+/* UTILITY CLASSES -------------------------------------------*/
+
+.image-replaced
+	text-indent -5000px
+	background-color transparent !important
+	background-repeat no-repeat !important
+	padding 0 !important
+	font-size 0 !important
+	line-height 0 !important
+
+.hidden
+	position absolute
+	left -9999px
+	height 1px
+	width 1px
+	overflow hidden
+	margin-bottom -1px
+	font-size 1px
+	line-height 1px
+
+.clearer
+	clear both
+	height 1px
+	overflow hidden
+	margin-top -1px
+	font-size 1px
+	line-height 1px
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+	.bounding
+		padding  26px 26px 40px
+
+	#header
+		#logo
+			margin-bottom 20px
+			margin-top 0
+
+		img
+			width 140px
+
+	#forkme
+		width 111px
+		height 111px
+
+	h2
+		padding-bottom 16px
+
+	h4
+		font-size 14px
+
+	a.register
+		font-size 14px
+		display block
+		text-align center
+		padding-top 10px
+		padding-bottom 10px
+
+	section
+		padding-bottom 25px
+
+	section.next-event
+		margin-bottom 0
+
+	section.presentations
+		padding-bottom 10px
+
+	section.presentations ul img
+		width 64px
+		height 64px
+		margin 0 18px 40px 0
