@@ -1,9 +1,15 @@
 var path = require('path');
+var fs = require('fs');
 var _ = require('underscore');
+var async = require('async');
+var lanyrd = require('lanyrd-scraper');
+var twitface = require('twitface');
 var viewHelpers = require('./src/lib/view-helpers');
 var data = {
-	event: require('./src/data/event.json'),
-	videos: require('./src/data/videos.json')
+	currentEvent: fs.existsSync('./src/data/currentevent.json') ? require('./src/data/currentevent.json') : {},
+	nextEvent: fs.existsSync('./src/data/nextevent.json') ? require('./src/data/nextevent.json') : {},
+	avatars: fs.existsSync('./src/data/avatars.json') ? require('./src/data/avatars.json') : {},
+	videos: fs.existsSync('./src/data/videos.json') ? require('./src/data/videos.json') : []
 };
 
 module.exports = function(grunt) {
@@ -169,7 +175,9 @@ module.exports = function(grunt) {
 						// Manually bring in the helpers.
 						a: viewHelpers.a,
 						strong: viewHelpers.strong,
-						event: data.event,
+						currentEvent: data.currentEvent,
+						nextEvent: data.nextEvent,
+						avatars: data.avatars,
 						videos: data.videos,
 						project: {
 							name: '<%= pkg.name %>',
@@ -186,6 +194,59 @@ module.exports = function(grunt) {
 				}
 			}
 		}
+	});
+
+	grunt.registerTask('download', function(month, year) {
+		var months = 'january february march april may june july august september october november december'.split(' ');
+		var done = this.async();
+
+		grunt.log.subhead('Downloading data...');
+
+		grunt.log.writeln('Downloading event data from Lanyrd');
+
+		var currentUrl = '/' + year + '/melbjs-' + month;
+		var nextUrl = (function() {
+			var monthIndex = months.indexOf(month);
+			var nextEventMonth = monthIndex === months.length - 1 ? months[0] : months[monthIndex + 1];
+			var nextEventYear = nextEventMonth === months[0] ? year + 1 : year;
+			return '/' + nextEventYear + '/melbjs-' + nextEventMonth;
+		}());
+
+		async.parallel({
+			currentEvent: lanyrd.scrape.bind(null, currentUrl),
+			nextEvent: lanyrd.scrape.bind(null, nextUrl)
+		}, function(err, results) {
+			var currentEvent = results.currentEvent;
+			currentEvent.url = 'http://lanyrd.com' + currentUrl;
+
+			var nextEvent = results.nextEvent;
+			nextEvent.url = 'http://lanyrd.com' + nextUrl;
+
+			var speakersArray = currentEvent.speakers.map(function(speaker) { return speaker.twitterHandle; });
+			speakersArray = speakersArray.concat(nextEvent.speakers.map(function(speaker) { return speaker.twitterHandle; }));
+
+			grunt.log.writeln('Downloading avatar URLs from Twitter');
+			twitface.load(speakersArray, 'reasonably_small', function(err, urls) {
+				grunt.log.ok('Done!');
+
+				grunt.log.subhead('Writing data...');
+
+				var speakers = {};
+				speakersArray.forEach(function(speaker, i) { speakers[speaker] = urls[i]; });
+
+				grunt.log.writeln('Writing currentevent.json');
+				fs.writeFileSync('./src/data/currentevent.json', JSON.stringify(currentEvent, null, 2));
+
+				grunt.log.writeln('Writing nextevent.json');
+				fs.writeFileSync('./src/data/nextevent.json', JSON.stringify(nextEvent, null, 2));
+
+				grunt.log.writeln('Writing avatars.json');
+				fs.writeFileSync('./src/data/avatars.json', JSON.stringify(speakers, null, 2));
+
+				grunt.log.ok('Done!');
+				done();
+			});
+		});
 	});
 
 	// Import custom tasks (and override the default test with mocha test).

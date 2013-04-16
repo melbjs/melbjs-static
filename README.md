@@ -11,9 +11,22 @@ For more details about the meetup visit [melbjs.com](http://melbjs.com)
 Tested & Builds on:
 grunt v0.3.17
 
-From Terminal:
-grunt
-serve bin/
+First, download event data. For example, to download data for May 2013's meetup:
+```bash
+$ grunt download:may:2013
+```
+
+Compile static assets into 'bin' directory with the default Grunt task:
+
+```bash
+$ grunt
+```
+
+Serve the MelbJS site from the 'bin' directory:
+
+```
+$ serve bin/
+```
 
 ## Contribute
 

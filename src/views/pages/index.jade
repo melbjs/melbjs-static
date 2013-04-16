@@ -16,52 +16,50 @@ block content
 
 		section.next-event
 
-			h2= event.title === 'MelbJS' ? 'Next event' : event.title
+			h2= currentEvent.title === 'MelbJS' ? 'Next event' : currentEvent.title
 
-			if event.tagline
-				p= event.tagline
+			if currentEvent.tagline
+				p= currentEvent.tagline
 
 			ul
 				li
 					strong When
-					span #{event.start.date}, #{event.start.time}
+					span #{currentEvent.startDate}, #{currentEvent.time}
 				li
 					strong Where
 
-					if event.venues.length > 0 && event.venues[0].address.trim() !== ''
-						span #{event.venues[0].name} - #{event.venues[0].address} !{a(event.venues[0].gmaps, "(view map)")}
+					if currentEvent.venues.length > 0 && currentEvent.venues[0].address.trim() !== ''
+						span #{currentEvent.venues[0].name} - #{currentEvent.venues[0].address} !{a(currentEvent.venues[0].googleMapsUrl, "(view map)")}
 					else
-						span
-							| Venue to be announced. Stay tuned, or !{a('http://twitter.com/melbjs', 'follow us on Twitter')}.
+						span Venue to be announced. Stay tuned, or !{a('http://twitter.com/melbjs', 'follow us on Twitter')}.
 
 			p
-				a.register(href=event.url) Register for this event at Lanyrd.com
+				a.register(href=currentEvent.url) Register for this event at Lanyrd.com
 
 		section.presentations
 
 			h2 Presentations
 
-			if event.sessions.length === 0
-				p We are currently looking for presenters for the next event. !{a('http://twitter.com/melbjs', 'Contact us if you\'d like to speak')}.
+			if currentEvent.sessions.length === 0
+				p We are currently looking for presenters for the next currentEvent. !{a('http://twitter.com/melbjs', 'Contact us if you\'d like to speak')}.
 			else
 				ul
-					each session in event.sessions
+					each session in currentEvent.sessions
 						if session.title !== 'TBA' && session.speakers.length === 1
 							- var speaker = session.speakers[0];
 							li
-								if speaker.twitter
-									a(href='http://lanyrd.com/profile/' + speaker.twitter)
-										img(src="http://api.twitter.com/1/users/profile_image?screen_name=#{speaker.twitter}&size=reasonably_small")
+								if speaker.twitterHandle
+									a(href='http://lanyrd.com/profile/' + speaker.twitterHandle)
+										img(src=avatars[speaker.twitterHandle])
 								else
 									img.no-avatar(src='http://avatars.io/twitter/melbjs_no_avatar?size=reasonably_small')
-
 
 								h3
 									a(href=session.url)= session.title
 
-								h4 presented by
-									if session.speakers[0].twitter
-										|  !{a('http://lanyrd.com/profile/' + speaker.twitter, speaker.name)}
+								h4 presented by 
+									if speaker.twitterHandle
+										a(href='http://lanyrd.com/profile/' + speaker.twitterHandle)= speaker.name
 									else
 										speaker.name
 
@@ -87,7 +85,7 @@ block content
 				| using an interesting plugin, tool, framework or library? Want to
 				| get back to basics and teach us some useful JavaScript techniques? Maybe
 				| you just want to share some of your hard-earned opinions. Whatever it
-				| is, !{a('http://twitter.com/melbjs', 'contact us on Twitter')} to get involved in an upcoming event.
+				| is, !{a('http://twitter.com/melbjs', 'contact us on Twitter')} to get involved in an upcoming currentEvent.
 
 		section
 

@@ -1,0 +1,19 @@
+section.presentations
+	ul
+		- var speaker = session.speakers[0];
+		li
+			if session.speakers.length === 1 && speaker.twitterHandle
+				a(href='http://lanyrd.com/profile/' + speaker.twitterHandle.replace('@',''))
+					img(src=avatars[speaker.twitterHandle.replace('@','')])
+			else
+				img.no-avatar(src='http://avatars.io/twitter/melbjs_no_avatar?size=large')
+
+			h3
+				a(href=session.url)= session.title
+			
+			if session.speakers.length === 1
+				h4 
+					if speaker.twitterHandle
+						a(href='http://lanyrd.com/profile/' + speaker.twitterHandle.replace('@',''))= speaker.name
+					else
+						speaker.name

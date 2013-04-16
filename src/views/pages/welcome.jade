@@ -12,25 +12,8 @@ block content
 		section.title
 			img(src='/public/img/logo-large.png', alt='Melb JS')
 
-		each session in event.sessions.filter(function(session) { return session.title !== 'TBA' && session.speakers.length === 1; })
-			section.presentations
-				- var speaker = session.speakers[0];
-				ul
-					li
-						if speaker.twitter
-							a(href='http://lanyrd.com/profile/' + speaker.twitter)
-								img(src="http://api.twitter.com/1/users/profile_image?screen_name=#{speaker.twitter}&size=bigger")
-						else
-							img.no-avatar(src='http://avatars.io/twitter/melbjs_no_avatar?size=bigger')
-
-						h3
-							a(href=session.url)= session.title
-
-						h4
-							if session.speakers[0].twitter
-								|  !{a('http://lanyrd.com/profile/' + speaker.twitter, speaker.name)}
-							else
-								speaker.name
+		each session in currentEvent.sessions
+			include ../includes/session
 
 		section.sponsor.aconex
 			h4 Venue and Beer Sponsor
@@ -39,6 +22,20 @@ block content
 		section.sponsor.thoughtworks
 			h4 Pizza Sponsor
 			img(src='/public/img/thoughtworks-logo.gif', alt='Thoughtworks')
+
+		section.title
+			img(src='/public/img/logo-large.png', alt='Melb JS')
+
+		section.sponsor.aconex
+			h4 Venue and Beer Sponsor
+			img(src='/public/img/aconex-logo.gif', alt='Aconex')
+
+		section.sponsor.thoughtworks
+			h4 Pizza Sponsor
+			img(src='/public/img/thoughtworks-logo.gif', alt='Thoughtworks')
+		
+		each session in nextEvent.sessions
+			include ../includes/session
 
 		section.title
 			img(src='/public/img/logo-large.png', alt='Melb JS')
