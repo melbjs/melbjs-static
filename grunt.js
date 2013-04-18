@@ -11,6 +11,8 @@ var data = {
 	avatars: fs.existsSync('./src/data/avatars.json') ? require('./src/data/avatars.json') : {},
 	videos: fs.existsSync('./src/data/videos.json') ? require('./src/data/videos.json') : []
 };
+var s3 = require('aws-publisher');
+var config = require('./config');
 
 module.exports = function(grunt) {
 	'use strict';
@@ -246,6 +248,20 @@ module.exports = function(grunt) {
 				grunt.log.ok('Done!');
 				done();
 			});
+		});
+	});
+
+	grunt.registerTask('deploy', function() {
+		var done = this.async();
+		var publisher = new s3(config.deploy);
+		var options = {
+			origin: './bin',
+			dest: '',
+			filter: function(f, stat) { return !(/\.(DS_Store)$/).test(f); }
+		};
+		publisher.publishDir(options, function() {
+			console.log('Completed deployment');
+			done();
 		});
 	});
 

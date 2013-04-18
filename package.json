@@ -16,7 +16,8 @@
     "grunt-contrib-watch": "~0.1.4",
     "twitface": "~0.1.1",
     "lanyrd-scraper": "~0.2.1",
-    "async": "~0.2.7"
+    "async": "~0.2.7",
+    "aws-publisher": "0.0.1"
   },
   "devDependencies": {}
 }
