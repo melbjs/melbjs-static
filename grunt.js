@@ -234,7 +234,7 @@ module.exports = function(grunt) {
 				grunt.log.subhead('Writing data...');
 
 				var speakers = {};
-				speakersArray.forEach(function(speaker, i) { speakers[speaker] = urls[i]; });
+				speakersArray.forEach(function(speaker, i) { speakers[speaker.toLowerCase()] = urls[i]; });
 
 				grunt.log.writeln('Writing currentevent.json');
 				fs.writeFileSync('./src/data/currentevent.json', JSON.stringify(currentEvent, null, 2));
