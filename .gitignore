@@ -3,3 +3,4 @@ node_modules
 src/data/*.json
 !src/data/videos.json
 config/deploy.js
+config/twitter.js

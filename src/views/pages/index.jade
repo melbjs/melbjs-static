@@ -50,7 +50,7 @@ block content
 							li
 								if speaker.twitterHandle
 									a(href='http://lanyrd.com/profile/' + speaker.twitterHandle)
-										img(src=avatars[speaker.twitterHandle])
+										img(src=avatars[speaker.twitterHandle].replace('_normal.', '_bigger.'))
 								else
 									img.no-avatar(src='http://avatars.io/twitter/melbjs_no_avatar?size=reasonably_small')
 

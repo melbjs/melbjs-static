@@ -1,0 +1,6 @@
+module.exports = {
+	consumer_key: 'Twitter',
+	consumer_secret: 'API',
+	access_token_key: 'keys',
+	access_token_secret: 'here'
+};

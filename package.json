@@ -14,10 +14,10 @@
     "grunt": "~0.3.17",
     "grunt-contrib": "~0.3.0",
     "grunt-contrib-watch": "~0.1.4",
-    "twitface": "~0.1.1",
     "lanyrd-scraper": "~0.2.1",
     "async": "~0.2.7",
-    "aws-publisher": "0.0.1"
+    "aws-publisher": "0.0.1",
+    "ntwitter": "~0.5.0"
   },
   "devDependencies": {}
 }

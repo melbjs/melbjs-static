@@ -1,3 +1,4 @@
 module.exports = {
-	deploy: require('./deploy')
+	deploy: require('./deploy'),
+	twitter: require('./twitter')
 };

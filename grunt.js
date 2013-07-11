@@ -3,7 +3,7 @@ var fs = require('fs');
 var _ = require('underscore');
 var async = require('async');
 var lanyrd = require('lanyrd-scraper');
-var twitface = require('twitface');
+var Twitter = require('ntwitter');
 var viewHelpers = require('./src/lib/view-helpers');
 var data = {
 	currentEvent: fs.existsSync('./src/data/currentevent.json') ? require('./src/data/currentevent.json') : {},
@@ -13,6 +13,7 @@ var data = {
 };
 var s3 = require('aws-publisher');
 var config = require('./config');
+var twitter = new Twitter(config.twitter);
 
 module.exports = function(grunt) {
 	'use strict';
@@ -228,13 +229,15 @@ module.exports = function(grunt) {
 			speakersArray = speakersArray.concat(nextEvent.speakers.map(function(speaker) { return speaker.twitterHandle; }));
 
 			grunt.log.writeln('Downloading avatar URLs from Twitter');
-			twitface.load(speakersArray, 'reasonably_small', function(err, urls) {
+			twitter.showUser(speakersArray, function(err, users) {
 				grunt.log.ok('Done!');
 
 				grunt.log.subhead('Writing data...');
 
 				var speakers = {};
-				speakersArray.forEach(function(speaker, i) { speakers[speaker.toLowerCase()] = urls[i]; });
+				users.forEach(function(user) {
+					speakers[user.screen_name] = user.profile_image_url;
+				});
 
 				grunt.log.writeln('Writing currentevent.json');
 				fs.writeFileSync('./src/data/currentevent.json', JSON.stringify(currentEvent, null, 2));
