@@ -1,0 +1,46 @@
+extends ../layout
+
+block styles
+	- var cssPath = '/public/css/' + project.name + '-main-' + project.version + '.css';
+	link(rel='stylesheet', href='#{cssPath}')
+
+block content
+	.bounding
+
+		#header
+			a#logo(href='/')
+				img(src='/public/img/logo.png', alt='Melb JS')
+
+		a(href='https://github.com/melbjs/melbjs-static')
+			img#forkme(src='https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png', alt='Fork me on GitHub')
+
+		section
+
+			h2 Past Presentations
+
+			each video in videos.slice(0, 10)
+				<iframe src="http://player.vimeo.com/video/#{video}?byline=0&portrait=0&" width="536" height="302" frameborder="0" style="margin-bottom: 20px;" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+			p Watch more on !{a('https://vimeo.com/channels/melbjs', 'MelbJS Vimeo Channel')}.
+
+		section.next-event
+
+			h2= currentEvent.title === 'MelbJS' ? 'Next event' : currentEvent.title
+
+			if currentEvent.tagline
+				p= currentEvent.tagline
+
+			ul
+				li
+					strong When
+					span #{currentEvent.startDate}, #{currentEvent.time}
+				li
+					strong Where
+
+					if currentEvent.venues.length > 0 && currentEvent.venues[0].address.trim() !== ''
+						span #{currentEvent.venues[0].name} - #{currentEvent.venues[0].address} !{a(currentEvent.venues[0].googleMapsUrl, "(view map)")}
+					else
+						span Venue to be announced. Stay tuned, or !{a('http://twitter.com/melbjs', 'follow us on Twitter')}.
+
+			p
+				a.register(href=currentEvent.url) Register for this event at Lanyrd.com

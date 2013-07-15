@@ -57,7 +57,7 @@ block content
 								h3
 									a(href=session.url)= session.title
 
-								h4 presented by 
+								h4 presented by
 									if speaker.twitterHandle
 										a(href='http://lanyrd.com/profile/' + speaker.twitterHandle)= speaker.name
 									else
@@ -89,7 +89,7 @@ block content
 
 		section
 
-			h2 Past Presentations
+			h2 Past Presentations (!{a('/videos', 'view all')})
 
 			each video in videos.slice(0, 2)
 				<iframe src="http://player.vimeo.com/video/#{video}?byline=0&portrait=0&" width="536" height="302" frameborder="0" style="margin-bottom: 20px;" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>

@@ -193,7 +193,8 @@ module.exports = function(grunt) {
 				},
 				files: {
 					"bin/index.html": "src/views/pages/index.jade",
-					"bin/welcome/index.html": "src/views/pages/welcome.jade"
+					"bin/welcome/index.html": "src/views/pages/welcome.jade",
+					"bin/videos/index.html": "src/views/pages/videos.jade"
 				}
 			}
 		}
