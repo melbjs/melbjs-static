@@ -226,8 +226,8 @@ module.exports = function(grunt) {
 			var nextEvent = results.nextEvent;
 			nextEvent.url = 'http://lanyrd.com' + nextUrl;
 
-			var speakersArray = currentEvent.speakers.map(function(speaker) { return speaker.twitterHandle; });
-			speakersArray = speakersArray.concat(nextEvent.speakers.map(function(speaker) { return speaker.twitterHandle; }));
+			var speakersArray = currentEvent.speakers.map(function(speaker) { return speaker.twitterHandle.toLowerCase(); });
+			speakersArray = speakersArray.concat(nextEvent.speakers.map(function(speaker) { return speaker.twitterHandle.toLowerCase(); }));
 
 			grunt.log.writeln('Downloading avatar URLs from Twitter');
 			twitter.showUser(speakersArray, function(err, users) {
@@ -237,7 +237,7 @@ module.exports = function(grunt) {
 
 				var speakers = {};
 				users.forEach(function(user) {
-					speakers[user.screen_name] = user.profile_image_url;
+					speakers[user.screen_name.toLowerCase()] = user.profile_image_url;
 				});
 
 				grunt.log.writeln('Writing currentevent.json');
