@@ -84,7 +84,8 @@ module.exports = function(grunt) {
 			},
 			welcome: {
 				src: [
-					'src/public/js/bespoke.min.js',
+					'node_modules/bespoke/dist/bespoke.js',
+					'node_modules/bespoke-hash/dist/bespoke-hash.js',
 					'src/public/js/prefixfree.min.js'
 				].concat(WELCOME_JAVASCRIPT_FILES),
 				dest: 'bin/public/js/<%= pkg.name %>-welcome-<%= pkg.version %>.js'

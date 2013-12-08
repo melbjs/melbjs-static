@@ -17,7 +17,9 @@
     "lanyrd-scraper": "~0.2.1",
     "async": "~0.2.7",
     "aws-publisher": "0.0.1",
-    "ntwitter": "~0.5.0"
+    "ntwitter": "~0.5.0",
+    "bespoke": "~0.3.1",
+    "bespoke-hash": "~0.1.2"
   },
   "devDependencies": {}
 }
