@@ -213,7 +213,7 @@ module.exports = function(grunt) {
 		var nextUrl = (function() {
 			var monthIndex = months.indexOf(month);
 			var nextEventMonth = monthIndex === months.length - 1 ? months[0] : months[monthIndex + 1];
-			var nextEventYear = nextEventMonth === months[0] ? year + 1 : year;
+			var nextEventYear = nextEventMonth === months[0] ? parseInt(year, 10) + 1 : year;
 			return '/' + nextEventYear + '/melbjs-' + nextEventMonth;
 		}());
 
