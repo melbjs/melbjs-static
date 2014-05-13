@@ -177,6 +177,13 @@ section.presentations
 			height 0
 			border 32px solid #f0f0f0
 
+iframe.video
+	width 536px
+	height 302px
+	@media only screen and (max-width: 484px)
+		width: 100%
+		height: 150px
+
 /* UTILITY CLASSES -------------------------------------------*/
 
 .image-replaced
@@ -205,7 +212,7 @@ section.presentations
 	font-size 1px
 	line-height 1px
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+@media only screen and (min-width: 320px) and (max-width: 480px)
 	.bounding
 		padding  26px 26px 40px
 
