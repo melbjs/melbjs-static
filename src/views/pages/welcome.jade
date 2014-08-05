@@ -1,5 +1,8 @@
 extends ../layout
 
+block head
+	title MelbJS - Welcome
+
 block styles
 	link(rel='stylesheet', href="#{'/public/css/' + project.name + '-main-' + project.version + '.css'}")
 	link(rel='stylesheet', href="#{'/public/css/' + project.name + '-welcome-' + project.version + '.css'}")
