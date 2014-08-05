@@ -1,0 +1,59 @@
+extends ../layout
+
+block head
+	title MelbJS - Code of Conduct
+
+block styles
+	- var cssPath = '/public/css/' + project.name + '-main-' + project.version + '.css';
+	link(rel='stylesheet', href='#{cssPath}')
+	meta(name='viewport', content='width=device-width, initial-scale=1')
+
+block content
+	.bounding
+
+		#header
+			a#logo(href='/')
+				img(src='/public/img/logo.png', alt='Melb JS')
+
+		a(href='https://github.com/melbjs/melbjs-static')
+			img#forkme(src='https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png', alt='Fork me on GitHub')
+
+		section
+
+			h2 Code of Conduct
+
+			p All attendees, speakers, sponsors and volunteers at our event are required to agree with the following code of conduct. Organisers will enforce this code throughout the event. We are expecting cooperation from all participants to help ensuring a safe environment for everybody.
+
+			p
+				i tl;dr: Don’t be a jerk.
+
+			h2 Need Help?
+
+			p Contact one of the event organisers. The list of organisers for each event can be seen on its matching Lanyrd event page, which can be found via <a href="/">melbjs.com</a> and our <a href="http://lanyrd.com/series/melbjs/">Lanyrd event series</a>.
+
+			h2 The Quick Version
+
+			p Our event is dedicated to providing a harassment-free event experience for everyone, regardless of gender, age, sexual orientation, disability, physical appearance, body size, race, or religion (or lack thereof). We do not tolerate harassment of event participants in any form. Sexual language and imagery is not appropriate for any event venue, including talks, workshops, parties, Twitter and other online media. Event participants violating these rules may be sanctioned or expelled from the event without a refund at the discretion of the organisers.
+
+			h2 The Less Quick Version
+
+			p Harassment includes offensive verbal comments related to gender, age, sexual orientation, disability, physical appearance, body size, race, religion, sexual images in public spaces, deliberate intimidation, stalking, following, harassing photography or recording, sustained disruption of talks or other events, inappropriate physical contact, and unwelcome sexual attention.
+
+			p Participants asked to stop any harassing behavior are expected to comply immediately.
+
+			p Sponsors are also subject to the anti-harassment policy. In particular, sponsors should not use sexualised images, activities, or other material.
+
+			p If a participant engages in harassing behavior, the organisers may take any action they deem appropriate, including warning the offender or expulsion from the event.
+
+			p If you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact a member of event staff immediately.
+
+			p Event staff will be happy to help participants contact local law enforcement, provide escorts, or otherwise assist those experiencing harassment to feel safe for the duration of the event. We value your attendance.
+
+			p We expect participants to follow these rules at event and workshop venues and event-related social events.
+
+			h2 Credit
+
+			p This document is based on <a href="http://confcodeofconduct.com/">Conference Code of Conduct</a>.
+
+			p
+				i If you have any suggestions for how this document could be improved, please let us know.
