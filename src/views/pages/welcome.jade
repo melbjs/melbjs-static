@@ -20,7 +20,7 @@ block content
 
 		section.sponsor.aconex
 			h4 Venue and Beer Sponsor
-			img(src='/public/img/aconex-logo.gif', alt='Aconex')
+			img(src='/public/img/aconex-logo.png', alt='Aconex')
 
 		section.sponsor.thoughtworks
 			h4 Pizza Sponsor
@@ -32,21 +32,24 @@ block content
 
 		section.title
 			img(src='/public/img/logo-large.png', alt='Melb JS')
-
-		section.sponsor.aconex
-			h4 Venue and Beer Sponsor
-			img(src='/public/img/aconex-logo.gif', alt='Aconex')
-
-		section.sponsor.thoughtworks
-			h4 Pizza Sponsor
-			img(src='/public/img/thoughtworks-logo.gif', alt='Thoughtworks')
-
-		section.sponsor.seek
-			h4 Bar Tab Sponsor
-			img(src='/public/img/seek-logo.png', alt='SEEK')
 
 		each session in nextEvent.sessions
 			include ../includes/session
 
-		section.title
-			img(src='/public/img/logo-large.png', alt='Melb JS')
+		section.sponsor.aconex
+			h4 Venue and Beer Sponsor
+			img(src='/public/img/aconex-logo.png', alt='Aconex')
+
+		section.sponsor.thoughtworks
+			h4 Pizza Sponsor
+			img(src='/public/img/thoughtworks-logo.gif', alt='Thoughtworks')
+
+		section.sponsor.seek(style='padding-top: 0')
+			h4 Bar Tab Sponsor
+			img(src='/public/img/seek-logo.png', alt='SEEK')
+			h1 Duke of Wellington
+			h2 Cnr Flinders &amp; Russel St
+
+		section.sponsor
+			img(src='/public/img/logo-large.png', alt='Melb JS', style='width: 560px; margin: 40px 0;')
+			h2 Any help packing up would be much appreciated :)
