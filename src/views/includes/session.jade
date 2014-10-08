@@ -2,7 +2,7 @@ section.presentations
 	ul
 		- var speaker = session.speakers[0];
 		li
-			if session.speakers.length === 1 && speaker.twitterHandle
+			if session.speakers.length > 0 && speaker.twitterHandle
 				.avatar(style='background-image: url(' + avatars[speaker.twitterHandle.replace('@','')].replace('_normal.','.') + ');')
 			else
 				img.no-avatar(src='http://avatars.io/twitter/melbjs_no_avatar?size=large')
@@ -10,7 +10,7 @@ section.presentations
 			h3
 				a(href=session.url)= session.title
 			
-			if session.speakers.length === 1
+			if session.speakers.length > 0
 				h4 
 					if speaker.twitterHandle
 						a(href='http://lanyrd.com/profile/' + speaker.twitterHandle.replace('@',''))= speaker.name

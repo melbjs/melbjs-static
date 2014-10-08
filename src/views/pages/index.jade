@@ -49,7 +49,7 @@ block content
 			else
 				ul
 					each session in currentEvent.sessions
-						if session.title !== 'TBA' && session.speakers.length === 1
+						if session.title !== 'TBA' && session.speakers.length > 0
 							- var speaker = session.speakers[0];
 							li
 								if speaker.twitterHandle
