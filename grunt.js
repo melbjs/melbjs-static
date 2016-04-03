@@ -9,7 +9,8 @@ var data = {
 	currentEvent: fs.existsSync('./src/data/currentevent.json') ? require('./src/data/currentevent.json') : {},
 	nextEvent: fs.existsSync('./src/data/nextevent.json') ? require('./src/data/nextevent.json') : {},
 	avatars: fs.existsSync('./src/data/avatars.json') ? require('./src/data/avatars.json') : {},
-	videos: fs.existsSync('./src/data/videos.json') ? require('./src/data/videos.json') : []
+	videos: fs.existsSync('./src/data/videos.json') ? require('./src/data/videos.json') : [],
+	overrides: fs.existsSync('./src/data/overrides.json') ? require('./src/data/overrides.json') : {},
 };
 var s3 = require('aws-publisher');
 var config = require('./config');
@@ -183,6 +184,7 @@ module.exports = function(grunt) {
 						nextEvent: data.nextEvent,
 						avatars: data.avatars,
 						videos: data.videos,
+						overrides: data.overrides,
 						project: {
 							name: '<%= pkg.name %>',
 							version: '<%= pkg.version %>',

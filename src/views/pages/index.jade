@@ -39,7 +39,8 @@ block content
 						span Venue to be announced. Stay tuned, or !{a('http://twitter.com/melbjs', 'follow us on Twitter')}.
 
 			p
-				a.register(href=currentEvent.url) Register for this event at Lanyrd.com
+				a.register(href=overrides.register && overrides.register.url || currentEvent.url)
+					=overrides.register && overrides.register.label || 'Register for this event at Lanyrd.com'
 
 		section.presentations
 
