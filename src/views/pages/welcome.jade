@@ -17,40 +17,41 @@ block content
 
 		each session in currentEvent.sessions
 			include ../includes/session
+		
+		section.sponsor.codeofconduct
+			h2 Speakers wanted...
 
 		section.sponsor.aconex
-			h4 Venue and Beer Sponsor
+			h4 Venue and Drink Sponsor
 			img(src='/public/img/aconex-logo.png', alt='Aconex')
 
 		section.sponsor.thoughtworks
-			h4 Pizza Sponsor
+			h4 Food Sponsor
 			img(src='/public/img/thoughtworks-logo.gif', alt='Thoughtworks')
-
-		section.sponsor.learnable
-			h4 Video Sponsor
-			img(src='/public/img/learnable-logo.png', alt='Learnable')
 
 		section.sponsor.seek
 			h4 Bar Tab Sponsor
 			img(src='/public/img/seek-logo.png', alt='SEEK')
+		
+		section.sponsor.codeofconduct
+			h2 Code of Conduct
 
 		section.title
 			img(src='/public/img/logo-large.png', alt='Melb JS')
 
 		each session in nextEvent.sessions
 			include ../includes/session
+		
+		section.sponsor.codeofconduct
+			h2 Speakers wanted!
 
 		section.sponsor.aconex
-			h4 Venue and Beer Sponsor
+			h4 Venue and Drink Sponsor
 			img(src='/public/img/aconex-logo.png', alt='Aconex')
 
 		section.sponsor.thoughtworks
-			h4 Pizza Sponsor
+			h4 Food Sponsor
 			img(src='/public/img/thoughtworks-logo.gif', alt='Thoughtworks')
-
-		section.sponsor.learnable
-			h4 Video Sponsor
-			img(src='/public/img/learnable-logo.png', alt='Learnable')
 
 		section.sponsor.seek(style='padding-top: 0')
 			h4 Bar Tab Sponsor
