@@ -240,7 +240,7 @@ module.exports = function(grunt) {
 				grunt.log.subhead('Writing data...');
 
 				var speakers = {};
-				users.forEach(function(user) {
+				(users || []).forEach(function(user) {
 					speakers[user.screen_name.toLowerCase()] = user.profile_image_url;
 				});
 
