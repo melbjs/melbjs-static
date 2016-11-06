@@ -54,7 +54,7 @@ block content
 						if session.title !== 'TBA' && session.speakers.length > 0
 							- var speaker = session.speakers[0];
 							li
-								if speaker.twitterHandle
+								if speaker.twitterHandle && avatars[speaker.twitterHandle]
 									a(href='http://lanyrd.com/profile/' + speaker.twitterHandle)
 										img(src=avatars[speaker.twitterHandle].replace('_normal.', '_bigger.'))
 								else
@@ -63,11 +63,17 @@ block content
 								h3
 									a(href=session.url)= session.title
 
-								h4 presented by 
-									if speaker.twitterHandle
-										a(href='http://lanyrd.com/profile/' + speaker.twitterHandle)= speaker.name
-									else
-										span= speaker.name
+								if session.speakers.length > 0
+									h4
+										each speaker, index in session.speakers
+											if speaker.twitterHandle
+												a(href='http://lanyrd.com/profile/' + speaker.twitterHandle.replace('@',''))= speaker.name
+											else
+												span= speaker.name
+											if index === (session.speakers.length - 2)
+												|  and 
+											else if index < (session.speakers.length - 3)
+												| , 
 
 		section
 

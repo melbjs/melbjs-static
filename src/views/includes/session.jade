@@ -1,9 +1,9 @@
 section.presentations
 	ul
-		- var speaker = session.speakers[0];
+		- var firstSpeaker = session.speakers[0];
 		li
-			if session.speakers.length > 0 && speaker.twitterHandle
-				.avatar(style='background-image: url(' + avatars[speaker.twitterHandle.replace('@','')].replace('_normal.','.') + ');')
+			if session.speakers.length > 0 && firstSpeaker.twitterHandle && avatars[firstSpeaker.twitterHandle.replace('@','')]
+				.avatar(style='background-image: url(' + avatars[firstSpeaker.twitterHandle.replace('@','')].replace('_normal.','.') + ');')
 			else
 				img.no-avatar(src='http://avatars.io/twitter/melbjs_no_avatar?size=large')
 
@@ -11,8 +11,13 @@ section.presentations
 				a(href=session.url)= session.title
 			
 			if session.speakers.length > 0
-				h4 
-					if speaker.twitterHandle
-						a(href='http://lanyrd.com/profile/' + speaker.twitterHandle.replace('@',''))= speaker.name
-					else
-						div= speaker.name
+				h4
+					each speaker, index in session.speakers
+						if speaker.twitterHandle
+							a(href='http://lanyrd.com/profile/' + speaker.twitterHandle.replace('@',''))= speaker.name
+						else
+							span= speaker.name
+						if index === (session.speakers.length - 2)
+							|  and 
+						else if index < (session.speakers.length - 3)
+							| , 
